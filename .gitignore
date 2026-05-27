@@ -1,0 +1,15 @@
+# Data files — never commit raw data to version control
+*.csv
+*.json
+*.parquet
+*.xlsx
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# OS
+.DS_Store
+Thumbs.db
