@@ -1,0 +1,155 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2026-07-06 18:21:32",
+    "containerVersion": {
+        "path": "accounts/6360016000/containers/255022155/versions/0",
+        "accountId": "6360016000",
+        "containerId": "255022155",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/6360016000/containers/255022155",
+            "accountId": "6360016000",
+            "containerId": "255022155",
+            "name": "SST Portfolio",
+            "publicId": "GTM-P5CT43RR",
+            "usageContext": [
+                "SERVER"
+            ],
+            "fingerprint": "1781296926304",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6360016000/containers/255022155/workspaces?apiLink=container",
+            "features": {
+                "supportUserPermissions": true,
+                "supportEnvironments": true,
+                "supportWorkspaces": true,
+                "supportGtagConfigs": false,
+                "supportBuiltInVariables": true,
+                "supportClients": true,
+                "supportFolders": true,
+                "supportTags": true,
+                "supportTemplates": true,
+                "supportTriggers": true,
+                "supportVariables": true,
+                "supportVersions": true,
+                "supportZones": true,
+                "supportTransformations": true
+            },
+            "tagIds": [
+                "GTM-P5CT43RR"
+            ],
+            "taggingServerUrls": [
+                "https://sst-portfolio-aniji.nn.r.appspot.com",
+                "https://collect.aniji.ca",
+                "https://debug-server-dot-sst-portfolio-aniji.nn.r.appspot.com"
+            ]
+        },
+        "tag": [
+            {
+                "accountId": "6360016000",
+                "containerId": "255022155",
+                "tagId": "6",
+                "name": "GA4 Server-Side Tag",
+                "type": "sgtmgaaw",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "redactVisitorIp",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "epToIncludeDropdown",
+                        "value": "all"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "upToIncludeDropdown",
+                        "value": "all"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementId",
+                        "value": "G-X2T5TJ9EM3"
+                    }
+                ],
+                "fingerprint": "1781816897791",
+                "firingTriggerId": [
+                    "5"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "6360016000",
+                "containerId": "255022155",
+                "triggerId": "5",
+                "name": "All Events",
+                "type": "ALWAYS",
+                "fingerprint": "1781035382772"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "6360016000",
+                "containerId": "255022155",
+                "type": "EVENT_NAME",
+                "name": "Event Name"
+            }
+        ],
+        "fingerprint": "1783362092222",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6360016000/containers/255022155/versions/0?apiLink=version",
+        "client": [
+            {
+                "accountId": "6360016000",
+                "containerId": "255022155",
+                "clientId": "8",
+                "name": "GA4 Client",
+                "type": "gaaw_client",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieDomain",
+                        "value": "auto"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieMaxAgeInSec",
+                        "value": "63072000"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "activateDefaultPaths",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookiePath",
+                        "value": "/"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "migrateFromJsClientId",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieManagement",
+                        "value": "server"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieName",
+                        "value": "FPID"
+                    }
+                ],
+                "fingerprint": "1781733293840"
+            }
+        ]
+    }
+}

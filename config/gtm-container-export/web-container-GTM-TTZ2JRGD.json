@@ -1,0 +1,139 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2026-07-06 18:19:56",
+    "containerVersion": {
+        "path": "accounts/6360016000/containers/255031143/versions/0",
+        "accountId": "6360016000",
+        "containerId": "255031143",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/6360016000/containers/255031143",
+            "accountId": "6360016000",
+            "containerId": "255031143",
+            "name": "Aniji Web",
+            "publicId": "GTM-TTZ2JRGD",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1781037237067",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6360016000/containers/255031143/workspaces?apiLink=container",
+            "features": {
+                "supportUserPermissions": true,
+                "supportEnvironments": true,
+                "supportWorkspaces": true,
+                "supportGtagConfigs": false,
+                "supportBuiltInVariables": true,
+                "supportClients": false,
+                "supportFolders": true,
+                "supportTags": true,
+                "supportTemplates": true,
+                "supportTriggers": true,
+                "supportVariables": true,
+                "supportVersions": true,
+                "supportZones": true,
+                "supportTransformations": false
+            },
+            "tagIds": [
+                "GTM-TTZ2JRGD"
+            ]
+        },
+        "tag": [
+            {
+                "accountId": "6360016000",
+                "containerId": "255031143",
+                "tagId": "3",
+                "name": "GA4 Config — Server-Side",
+                "type": "googtag",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "tagId",
+                        "value": "G-X2T5TJ9EM3"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "configSettingsTable",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "first_party_collection"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "server_container_url"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "https://sst-portfolio-aniji.nn.r.appspot.com"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1781816656469",
+                "firingTriggerId": [
+                    "2147479573",
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "6360016000",
+                "containerId": "255031143",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "6360016000",
+                "containerId": "255031143",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "6360016000",
+                "containerId": "255031143",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "6360016000",
+                "containerId": "255031143",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "6360016000",
+                "containerId": "255031143",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "1783361996047",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6360016000/containers/255031143/versions/0?apiLink=version"
+    }
+}
