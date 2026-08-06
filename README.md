@@ -55,7 +55,7 @@ Using a public e-commerce sample dataset and a synthetic Shopify setpoint, the m
 ## Technical Stack & Enterprise Infrastructure
 
 * **Production Ingestion:** First-Party Server-Side Tagging (SST) Proxy deployed on GCP App Engine Standard (`nodejs20`, Scale-to-Zero), mapped to custom domain `collect.aniji.ca` to establish first-party context.
-* **Reconciliation Engine (Demo Data):** The metrics shown below are demonstrated on the public GA4 sample e-commerce dataset plus a synthetic Shopify order generator with controlled failure-mode injection — same schema and SQL a client's live BigQuery export would use. See `docs/server-side-migration-framework.md` for the production cutover path.
+* **Reconciliation Engine (Demo Data):** The metrics shown below are demonstrated on the public GA4 sample e-commerce dataset using the **January 2021 historical sample window**, plus a synthetic Shopify order generator with controlled failure-mode injection. This historical demonstration path is separate from the live GA4 intraday export used to validate the production SST infrastructure. The same reconciliation schema and SQL pattern can be applied to a client's live BigQuery export. See `docs/server-side-migration-framework.md` for the production cutover path.
 * **Data Warehousing:** BigQuery (GoogleSQL) with cross-project IAM separation between the SST proxy project and warehouse project.
 * **Reconciliation:** Python · SQL · FMEA QA Framework
 * **Visualization:** Looker Studio
