@@ -17,11 +17,13 @@ I applied a Mass Balance framework — borrowed directly from chemical process e
 
 ## Result
 
+### Demonstration Reconciliation Result
 Using a public GA4 sample e-commerce dataset and a synthetic Shopify setpoint with controlled failure-mode injection, the reconciliation engine demonstrated the following:
 
 - **4.95% phantom ROAS over-attribution rate isolated and quantified** — the size of the leak between the Shopify setpoint and GA4-reported revenue in the demonstration dataset.
 - **$80,000 in estimated phantom revenue** shown to be preventable from entering a media team's ad spend optimization model.
 
+### Production SST Infrastructure Result
 Separately, on the production infrastructure side:
 
 - **Zero-loss server-side proxy deployed** on GCP App Engine, verified healthy on both its default `.appspot.com` endpoint and its production custom domain.
