@@ -10,17 +10,24 @@ I applied a Mass Balance framework — borrowed directly from chemical process e
 
 **Engineering steps taken:**
 
-1. **Built a FULL OUTER JOIN reconciliation engine** in BigQuery (`ga4_shopify_mass_balance.sql`) comparing Shopify order-level revenue against GA4 session-level attributed revenue, order by order.
-2. **Classified every discrepancy using FMEA** (Failure Mode and Effects Analysis) — the same framework used in industrial process safety — sorting leaks into failure mode categories (FM-01 through FM-03) by root cause: missing client-side fire, session timeout mismatch, and cross-domain tracking loss.
+1. **Built a FULL OUTER JOIN reconciliation engine** in BigQuery (`sql/ga4_shopify_mass_balance.sql`) comparing Shopify order-level revenue against GA4 session-level attributed revenue, order by order.
+2. **Classified every discrepancy using FMEA** (Failure Mode and Effects Analysis) — the same framework used in industrial process safety — sorting leaks into documented failure modes: FM-01 (client-side tracker suppression from ad blockers and browser privacy controls), FM-02 (cross-domain session drop-off that strips UTM attribution), and FM-03 (phantom purchases from voided or refunded orders). Full detail in `docs/fmea.md`.
 3. **Deployed a stateless Server-Side Tagging (SST) proxy** on GCP App Engine to intercept and forward tracking calls server-side, removing dependency on client-side JavaScript execution entirely. The proxy was bound to a custom production domain (`collect.aniji.ca`), not left on the default Google-assigned subdomain — closing the gap between a working prototype and a client-ready deployment.
-4. **Wired the proxy into a live BigQuery streaming pipeline**, enabling real-time intraday event validation instead of only next-day batch reporting.
+4. **Wired the production SST proxy into a live BigQuery streaming pipeline**, enabling real-time intraday event validation on the deployed GA4 property. This live pipeline is the production infrastructure path; it is distinct from the reconciliation dataset used to demonstrate the FMEA leak-classification logic below.
 
 ## Result
 
-- **4.95% phantom ROAS over-attribution rate isolated and quantified** — the exact size of the leak between Shopify ground truth and GA4-reported revenue.
-- **$80,000 in phantom revenue prevented** from entering the media team's ad spend optimization model.
+Using a public GA4 sample e-commerce dataset and a synthetic Shopify setpoint with controlled failure-mode injection, the reconciliation engine demonstrated the following:
+
+- **4.95% phantom ROAS over-attribution rate isolated and quantified** — the size of the leak between the Shopify setpoint and GA4-reported revenue in the demonstration dataset.
+- **$80,000 in estimated phantom revenue** shown to be preventable from entering a media team's ad spend optimization model.
+
+Separately, on the production infrastructure side:
+
 - **Zero-loss server-side proxy deployed** on GCP App Engine, verified healthy on both its default `.appspot.com` endpoint and its production custom domain.
-- **Live Looker Studio dashboard** built for ongoing FMEA leak monitoring — not a one-time audit, but a permanent control loop.
+- **Live Looker Studio dashboard** built for ongoing FMEA leak monitoring — designed as a permanent control loop, not a one-time audit.
+
+A second measurement cycle confirming the FM-01 suppression-rate change after the SST cutover has not yet been completed; see `docs/fmea.md` for current validation status.
 
 ## Evidence
 
@@ -37,7 +44,7 @@ I applied a Mass Balance framework — borrowed directly from chemical process e
 *GA4 Server-Side Tag confirmed firing through the GTM Server Container — proof the proxy is actively forwarding events.*
 
 ![BigQuery intraday streaming table](evidence/04-bigquery-intraday-table.png)
-*Real-time BigQuery intraday table showing streamed event data — proof the pipeline delivers live, not just batch, telemetry.*
+*Real-time BigQuery intraday table on the production GA4 property, showing streamed event data — proof the deployed infrastructure delivers live, not just batch, telemetry.*
 
 ## Stack
 
