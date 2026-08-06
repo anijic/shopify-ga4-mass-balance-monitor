@@ -40,7 +40,7 @@ Applying an industrial **Failure Mode and Effects Analysis (FMEA)** framework to
 
 ## Key Result
 
-Isolated a **4.95% over-attribution error rate** in the direct traffic channel, preventing the media team from optimizing against **$80,000 in phantom revenue**.
+Using a public e-commerce sample dataset and a synthetic Shopify setpoint, the mass balance reconciliation engine isolated a **4.95% over-attribution error rate**, demonstrating how to prevent an estimated **$80,000 in phantom revenue** from polluting media optimization models.
 
 ---
 
