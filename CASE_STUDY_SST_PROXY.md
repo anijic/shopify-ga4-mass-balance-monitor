@@ -31,6 +31,22 @@ Separately, on the production infrastructure side:
 
 A second measurement cycle confirming the FM-01 suppression-rate change after the SST cutover has not yet been completed; see `docs/fmea.md` for current validation status.
 
+## Phase 2: Production-Ready Extensions (Meta CAPI, Deduplication & Consent Mode v2)
+
+While the Phase 1 proxy successfully secured the GA4-to-BigQuery pipeline, enterprise tracking ecosystems require routing data to third-party endpoints (like Meta) without corrupting attribution models. I extended the proxy architecture to handle the two highest-risk failure modes in live SST deployments: event deduplication and user consent routing.
+
+### 1. Deterministic Event Deduplication (Dual-Tagging)
+To prevent signal loss from ad-blockers (ITP), best practice dictates firing both a client-side Meta Pixel and a server-side Conversions API (CAPI) tag simultaneously. Without proper deduplication, Meta will double-count the revenue, destroying ROAS calculations.
+
+I engineered a deterministic `event_id` schema originating in the browser's `dataLayer`.
+* **Architecture:** The `event_id` is anchored to the canonical e-commerce transaction (e.g., `purchase_{transaction_id}_{timestamp}`).
+* **Routing:** This exact ID is mapped to both the client-side pixel payload and the payload sent to the GCP App Engine proxy.
+* **Result:** The server automatically routes the ID to Meta CAPI. Meta successfully receives both payloads but utilizes the `event_id` to deduplicate them, preserving the conversion even if the browser pixel is blocked, while ensuring zero double-counting.
+
+### 2. Consent Mode v2 Dynamic Routing
+A server-side proxy acts as a central data router; it must dynamically suppress third-party vendor tags if user consent is denied. 
+I configured the GTM Server container to ingest Google Consent Mode v2 states directly from the `sst-trigger-environment`. If a user denies `ad_storage`, the App Engine proxy successfully blocks the Meta CAPI payload from firing, ensuring full GDPR/CCPA compliance at the infrastructure level, while allowing strictly anonymized `analytics_storage` pings to continue to BigQuery.
+
 ## Evidence
 
 ![App Engine healthy check — default endpoint](evidence/01a-appengine-healthy-default.png)
