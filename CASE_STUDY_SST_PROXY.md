@@ -64,6 +64,9 @@ I configured the GTM Server container to ingest Google Consent Mode v2 states di
 ![BigQuery intraday streaming table](evidence/04-bigquery-intraday-table.png)
 *Real-time BigQuery intraday table on the production GA4 property, showing streamed event data — proof the deployed infrastructure delivers live, not just batch, telemetry.*
 
+![Server Container Event Deduplication](evidence/05-server-event-deduplication.png)
+*GTM Server Container Preview confirming the deterministic `event_id` successfully survived the client-to-server payload transfer. This ID is automatically mapped to Meta CAPI, ensuring zero double-counting in production.*
+
 ## Stack
 
 BigQuery · Google Tag Manager (Web + Server Containers) · GCP App Engine · Google Analytics 4 · Shopify · Looker Studio · SQL (FULL OUTER JOIN reconciliation) · FMEA methodology
