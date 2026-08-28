@@ -26,7 +26,7 @@ Using a public GA4 sample e-commerce dataset and a synthetic Shopify setpoint wi
 ### Production SST Infrastructure Result
 Separately, on the production infrastructure side:
 
-- **Zero-loss server-side proxy deployed** on GCP App Engine, verified healthy on both its default `.appspot.com` endpoint and its production custom domain.
+- **Zero-loss server-side proxy deployed** on GCP App Engine, bound and verified healthy on its production custom domain to ensure absolute first-party cookie context
 - **Live Looker Studio dashboard** built for ongoing FMEA leak monitoring — designed as a permanent control loop, not a one-time audit.
 
 A second measurement cycle confirming the FM-01 suppression-rate change after the SST cutover has not yet been completed; see `docs/fmea.md` for current validation status.
