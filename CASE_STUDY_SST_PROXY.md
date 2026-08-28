@@ -49,23 +49,20 @@ I configured the GTM Server container to ingest Google Consent Mode v2 states di
 
 ## Evidence
 
-![App Engine healthy check — default endpoint](evidence/01a-appengine-healthy-default.png)
-*App Engine proxy service confirmed live and responding on its default `.appspot.com` URL.*
+![Production Proxy DNS Binding](evidence/01-appengine-healthy-custom.png)
+*App Engine proxy service confirmed healthy on the production custom domain `collect.aniji.ca`, validating end-to-end DNS binding for the first-party collection endpoint.*
 
-![App Engine healthy check — custom domain](evidence/01b-appengine-healthy-custom.png)
-*Same proxy service confirmed healthy on the production custom domain `collect.aniji.ca`, verifying end-to-end DNS binding.*
+![BigQuery Live Streaming](evidence/02-bigquery-intraday-table.png)
+*GA4 intraday table on the production BigQuery property, confirming that the deployed pipeline delivers streaming event telemetry rather than relying solely on batch exports.*
 
-![Tag Assistant connected](evidence/02-tag-assistant-connected.png)
-*Client-side trigger site confirmed connected to the GTM Web Container.*
+![Server Event Ingestion and Identity Preservation](evidence/03-server-event-integrity.png)
+*GTM Server Container Event Data confirms that the inbound Purchase payload retained its deterministic `event_id`, transaction ID, value, currency, and item data after browser-to-server routing. Client, network, and preview-session identifiers are redacted.*
 
-![Server container tag fired](evidence/03-server-container-fired.png)
-*GA4 Server-Side Tag confirmed firing through the GTM Server Container — proof the proxy is actively forwarding events.*
+![Meta CAPI Outbound Delivery](evidence/04-meta-capi-200.png)
+*GTM Server Preview shows the Meta CAPI Purchase tag firing successfully. Meta’s Graph API returned HTTP `200`, confirming accepted server-side event delivery. Credentials and test identifiers are redacted.*
 
-![BigQuery intraday streaming table](evidence/04-bigquery-intraday-table.png)
-*Real-time BigQuery intraday table on the production GA4 property, showing streamed event data — proof the deployed infrastructure delivers live, not just batch, telemetry.*
-
-![Server Container Event Deduplication](evidence/05-server-event-deduplication.png)
-*GTM Server Container Preview confirming the deterministic `event_id` successfully survived the client-to-server payload transfer. This ID is automatically mapped to Meta CAPI, ensuring zero double-counting in production.*
+![Meta Browser/Server Deduplication Validation](evidence/05-meta-events-manager-deduplication.png)
+*Meta Events Manager shows corresponding Browser Pixel and Server CAPI Purchase events. Meta marked the browser counterpart `Deduplicated` after matching the deterministic event identity, preventing the tested conversion from being double-counted.*
 
 ## Stack
 
